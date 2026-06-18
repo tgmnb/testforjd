@@ -5,6 +5,7 @@ __pycache__/
 
 # Cache
 data/contract_cache/
+data/vol_cache/
 data/schedule_cache/
 
 # Results

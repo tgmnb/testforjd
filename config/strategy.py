@@ -26,7 +26,7 @@ MARGIN_FRACTION: float = 0.10  # GPT-style alias
 # Contract multiplier (JD: 10 吨/手)
 CONTRACT_MULTIPLIER: int = 10
 
-# Leverage
+# Leverage (used with MARGIN_FRACTION: notional = equity × MARGIN_FRACTION × LEVERAGE)
 LEVERAGE: int = 10
 
 # Stop-loss: fixed percentage from entry price

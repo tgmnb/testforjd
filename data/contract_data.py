@@ -24,11 +24,21 @@ def _delivery_month_last_day(contract: str) -> date:
     """Last calendar day of the month BEFORE delivery month.
 
     Individual investors cannot hold into delivery month.
-    For DCE.jdYYMM: last viable trading day = last day of (MM-1).
+    For a DCE contract DCE.jdYYMM or DCE.pYYMM:
+    last viable trading day = last day of (MM-1).
     """
-    suffix = contract.split("jd")[-1]
-    yy = int(suffix[:2]) + 2000
-    mm = int(suffix[2:])
+    # Extract YYMM from contract code: standard=4digits(YYMM), CZCE=3digits(YMM)
+    import re
+    digits = re.search(r'(\d{3,4})$', contract)
+    if not digits:
+        return date(2099, 12, 31)
+    d = digits.group(1)
+    if len(d) == 4:
+        yy = int(d[:2]) + 2000
+        mm = int(d[2:])
+    else:  # CZCE: 3 digits, first = year digit, last 2 = month
+        yy = 2020 + int(d[0]) if int(d[0]) <= 9 else 2000 + int(d[:2])
+        mm = int(d[1:])
 
     if mm == 1:
         return date(yy - 1, 12, 31)

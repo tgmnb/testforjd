@@ -1,0 +1,23 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache
+data/contract_cache/
+data/schedule_cache/
+
+# Results
+results/
+
+# Temp
+*.tmp
+tmp_*.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

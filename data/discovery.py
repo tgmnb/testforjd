@@ -10,9 +10,9 @@ from dataclasses import dataclass
 from datetime import date, datetime, timezone, timedelta
 
 import pandas as pd
-from tqsdk import TqApi, TqAuth, TqBacktest, BacktestFinished
+from tqsdk import TqApi, TqAuth
 
-from .credentials import get_credentials
+from config.credentials import get_credentials
 
 
 @dataclass
